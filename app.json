@@ -1,0 +1,1 @@
+{"expo":{"name":"RK Developers","slug":"rk-developers-labour","version":"1.0.0","orientation":"portrait","userInterfaceStyle":"light","icon":"./assets/rk-logo.png","android":{"package":"com.rkdevelopers.labourmanager","permissions":["CAMERA"]},"plugins":[["expo-image-picker",{"cameraPermission":"Allow RK Developers to scan labour payment sheets."}]]}}
