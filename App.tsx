@@ -7,6 +7,7 @@ import * as ImagePicker from 'expo-image-picker';
 type Line={id:number;description:string;persons:string;rate:string;mode:'multiply'|'fixed'};
 type Payment={id:string;name:string;phone:string;site:string;date:string;lines:Line[];total:number;imageUri?:string};
 const ORANGE='#ff6900', BLACK='#181818', LIGHT='#f5f6f8';
+// RK Developers: GitHub connector write-access verification.
 const initial=():Line[]=>['Mason','Female Cooly','Mason Cooly','Tea & Bus','Maestri','Advance'].map((description,id)=>({id,description,persons:'',rate:'',mode:id>=3?'fixed':'multiply'}));
 const money=(n:number)=>'₹ '+n.toLocaleString('en-IN',{maximumFractionDigits:2});
 const amount=(l:Line)=>Number(l.rate||0)*(l.mode==='fixed'?1:Number(l.persons||0));
