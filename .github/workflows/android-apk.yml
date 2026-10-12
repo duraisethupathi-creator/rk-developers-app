@@ -1,9 +1,15 @@
 name: Build RK Developers Android APK
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - main
 jobs:
   build:
     runs-on: ubuntu-latest
+    concurrency:
+      group: rk-developers-apk
+      cancel-in-progress: true
     permissions:
       contents: read
     steps:
@@ -15,6 +21,8 @@ jobs:
           node-version: '22'
       - name: Install dependencies
         run: npm install
+      - name: Check TypeScript
+        run: npm run typecheck
       - name: Setup Expo EAS
         uses: expo/expo-github-action@v8
         with:
