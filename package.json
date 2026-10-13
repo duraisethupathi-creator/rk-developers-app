@@ -17,7 +17,8 @@
     "react-native": "0.81.4",
     "react-native-safe-area-context": "~5.6.0",
     "expo-print": "~15.0.7",
-    "expo-sharing": "~14.0.7"
+    "expo-sharing": "~14.0.7",
+    "@react-native-ml-kit/text-recognition": "^2.0.0"
   },
   "devDependencies": {
     "typescript": "~5.9.2",
