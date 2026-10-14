@@ -22,7 +22,7 @@ const escapeHtml=(x:string)=>String(x).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'
 function AppMain(){
  const [page,setPage]=useState<Screen>('home'),[records,setRecords]=useState<Payment[]>([]),[ready,setReady]=useState(false);
  const [name,setName]=useState(''),[phone,setPhone]=useState(''),[site,setSite]=useState(''),[date,setDate]=useState(today()),[lines,setLines]=useState<Line[]>(base()),[photo,setPhoto]=useState<string|undefined>();
- const [scanning,setScanning]=useState(false),[scanResult,setScanResult]=useState(''),[scanStatus,setScanStatus]=useState(''),[aiEndpoint,setAiEndpoint]=useState(''),[aiEnabled,setAiEnabled]=useState(false);
+ const [scanning,setScanning]=useState(false),[scanResult,setScanResult]=useState(''),[scanStatus,setScanStatus]=useState(''),[aiEndpoint,setAiEndpoint]=useState('');
  const [selected,setSelected]=useState<Payment|null>(null),[editing,setEditing]=useState<string|null>(null),[search,setSearch]=useState(''),[custom,setCustom]=useState<string[]>([]),[newType,setNewType]=useState('');
  useEffect(()=>{AsyncStorage.getItem('rk_ai_endpoint_v1').then(x=>{if(x)setAiEndpoint(x)}).catch(()=>{});Promise.all([AsyncStorage.getItem('rk_payments_v1'),AsyncStorage.getItem('rk_custom_labour_types')]).then(([r,t])=>{if(r){const a=JSON.parse(r);if(Array.isArray(a))setRecords(a.filter(x=>x&&typeof x.name==='string'&&Array.isArray(x.lines)))}if(t){const a=JSON.parse(t);if(Array.isArray(a))setCustom(a.filter(x=>typeof x==='string'))}}).catch(()=>Alert.alert('Storage','Saved data could not be loaded')).finally(()=>setReady(true))},[]);
  useEffect(()=>{if(ready)AsyncStorage.setItem('rk_payments_v1',JSON.stringify(records)).catch(()=>Alert.alert('Storage','Could not save records'))},[records,ready]);
